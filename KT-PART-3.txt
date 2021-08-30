@@ -11,7 +11,7 @@
 2. Purpose of the Test Kitchen?
    - With Test Kitchen, you continue to write your Chef code from your workstation, but instead of uploading your code to the Chef server and applying it to a node, Test Kitchen applies your code to a temporary environment,in our case a virtual machine on your workstation.
    - Test Kitchen builds the Vagrant file for you and is the interface you use to create, destroy, and run Chef on your instances. Test Kitchen also downloads the Vagrant box for you as needed.
-   - Kitchen file: driver specifies the software that manages the machine. We're using the Vagrant Test Kitchen driver (list of other popular drivers). The Vagrant driver works with VirtualBox by default.
+   - Kitchen file: driver specifies the software that manages the machine. We're using the Vagrant Test Kitchen driver. The Vagrant driver works with VirtualBox by default.
    - provisioner specifies how to run Chef.
 
 3. How to use it ?
