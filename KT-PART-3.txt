@@ -1,0 +1,85 @@
+1) https://learn.chef.io/courses/course-v1:chef+Infra101+perpetual/courseware/49dd59ea8b1f4c50ae9a260db35452ad/83abb7fe891e49629336150c19d649ee/4?activate_block_id=block-v1%3Achef%2BInfra101%2Bperpetual%2Btype%40html%2Bblock%40204f89dfaaf341da96ec252c4d03ae0b
+     Use Ubuntu and Vagrant environment for this.
+     After completing this module we expect you should be able to understand
+- What is Test Kitchen ?
+   - Purpose of the Test Kitchen?
+   - How to use it ?
+
+- Test kitchen: What is Test Kitchen?
+  - Run your infrastructure code in an isolated environment that resembles your production environment.
+
+2. Purpose of the Test Kitchen?
+   - With Test Kitchen, you continue to write your Chef code from your workstation, but instead of uploading your code to the Chef server and applying it to a node, Test Kitchen applies your code to a temporary environment,in our case a virtual machine on your workstation.
+   - Test Kitchen builds the Vagrant file for you and is the interface you use to create, destroy, and run Chef on your instances. Test Kitchen also downloads the Vagrant box for you as needed.
+   - Kitchen file: driver specifies the software that manages the machine. We're using the Vagrant Test Kitchen driver (list of other popular drivers). The Vagrant driver works with VirtualBox by default.
+   - provisioner specifies how to run Chef.
+
+3. How to use it ?
+
+- kitchen list (list all the kitchen boxes)
+- kitchen create (create a virtual machine)
+- Kitchen converge (apply cookbook on the machine, by running the chef-client on the instance)
+- Kitchen connect <machine-name> (connect to the machine)
+- Kitchen destroy (destroy the virtual machine)
+- Kitchen verify (verify the setup based on integrated tests)
+- Kitchen test (does destroy, create, converge, verify and destroy in one step!)
+
+=======================================================================
+
+2) https://learn.chef.io/courses/course-v1:chef+Infra101+perpetual/courseware/2e86b750149145a09d19d7c2a2ee2af5/996da03ae96c45b385c0755613266995/1?activate_block_id=block-v1%3Achef%2BInfra101%2Bperpetual%2Btype%40vertical%2Bblock%40771cae44b49d48a8b95698ed0fa29589
+
+   After completing this module we expect you should be able to understand
+
+ - What is policyfiles?
+- How to use policyfiles?
+
+Also go through the Chef Docs to read more about it.
+https://docs.chef.io/config_rb_policyfile/#
+
+Base reference : https://learn.chef.io/courses/course-v1:chef+Infra101+perpetual/course/
+
+1. What is policyfiles?
+
+   1. A Policyfile file allows you to specify in a single document the cookbook revisions and recipes that Chef Infra Client will apply. A Policyfile file is uploaded to the Chef Infra Server, where it is associated with a group of nodes. When these nodes are configured during a Chef Infra Client run, Chef Infra Client will make decisions based on your Policyfile settings and will build a run-list based on that information. A Policyfile file may be versioned
+
+   2. Policyfile will make it easier to test and promote code safely with a simpler interface. Policyfile improves the user experience and resolves real-world problems that some workflows built around Chef must deal with. The following sections discuss in more detail some of the good reasons to use Policyfile, including:
+
+      - Focus the workflow on the entire system
+
+      - Safer development workflows
+
+      - Less expensive computation
+
+      - Code visibility
+
+      - Role mutability
+
+      - Cookbook mutability
+
+      - Replaces Berkshelf and the environment cookbook pattern
+
+2.  Commands to manage policyfiles
+
+   - Use the chef generate policyfile POLICY_NAME (options) subcommand to generate a file to be used with Policyfile.
+
+   - Use the chef install POLICY_NAME subcommand to evaluate a policy file and find a compatible set of cookbooks, build a run-list, cache it locally, and then emit a Policyfile.lock.json file that describes the locked policy set. The Policyfile.lock.json file may be used to install the locked policy set to other machines and may be pushed to a policy group on the Chef server to apply that policy to a group of nodes that are under management by Chef.
+
+   - Use the chef clean-policy-cookbooks subcommand to delete cookbooks that are not used by Policyfile files. Cookbooks are considered unused when they are not referenced by any policy revisions on the Chef server.
+
+   - Use the chef clean-policy-revisions subcommand to delete orphaned policy revisions to Policyfile files from the Chef server. An orphaned policy revision is not associated to any policy group and therefore is not in active use by any node. Use ``chef show-policy --orphans`` to view a list of orphaned policy revisions.
+
+   - Use the chef delete-policy POLICY_NAME subcommand to delete all revisions of the named policy that exist on the Chef server. (The state of the policy revision is backed up locally and may be restored using the chef undelete subcommand.)
+
+   - Use the chef delete-policy-group POLICY_GROUP (options) subcommand to delete the named policy group from the Chef server. Any policy revision associated with that policy group is not deleted. (The state of the policy group is backed up locally and may be restored using the ``chef undelete`` subcommand.)
+
+   - Use the chef diff POLICY_FILE --head | --git POLICY_GROUP | POLICY_GROUP...POLICY_GROUP (options) subcommand to display an itemized comparison of two revisions of a Policyfile.lock.json file.
+
+   - Use the  chef provision POLICY_GROUP --policy-name POLICY_NAME subcommand to invoke an embedded chef-client run to provision machines using Chef provisioning. By default, this subcommand expects to find a cookbook named ``provision`` in the current working directory. The chef-client run will run a recipe in this cookbook that uses Chef provisioning to create one (or more) machines.
+
+   - The chef push-archive POLICY_GROUP ARCHIVE_FILE subcommand is used to publish a policy archive file to the Chef server. (A policy archive is created using the ``chef export`` subcommand.) The policy archive is assigned to the speciified policy group, which is a set of nodes that share the same run-list and cookbooks.
+
+   - Use the chef show-policy subcommand to display revisions for every Policyfile.rb file that is on the Chef server. By default, only active policy revisions are shown. When both a policy and policy group are specified, the contents of the active Policyfile.lock.json file for the policy group is returned.
+
+   - Use the  chef update POLICY_FILE subcommand to read the Policyfile.rb file, and then apply any changes. This will resolve dependencies and will create a Policyfile.lock.json file. The locked policy will reflect any changes to the run-list and will pull in any cookbook updates that are compatible with any version constraints defined in the Policyfile.rb file.
+
+   

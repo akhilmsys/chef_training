@@ -1,0 +1,67 @@
+https://learn.chef.io/modules/manage-a-node-chef-server#/infrastructure-automation
+
+After finishing with this tutorial you should be able to understand
+What is a workstation?
+What is a node?
+What is Chef Server?
+How to bootstrap a node? What does exactly bootstrapping a node means?
+What is the use of running Chef-Client periodically?
+What is a Cookbook?
+How to upload a cookbook on Chef Server? (basically get acquainted
+with those commands)
+How to update a cookbook which is uploaded on Chef Server?
+
+========================================================================
+
+1. What is a workstation?
+
+   - Workstation basically is place where cooks are  created and tested
+
+   - Basically gives the developer the access to various command line tools in order to create test the recipes and cookbooks.
+
+   - Interact with the chef server.
+
+   - CLI-tools
+
+     - Chef Infra: Use the chef command-line tool to work with items in a chef-repo, which is the primary location in which cookbooks are authored, tested, and maintained, and from which policy is uploaded to the Chef Infra Server
+     - Knife: Use the knife command-line tool to interact with nodes or work with objects on the Chef Infra Server
+     - Chef Infra Client: an agent that configures your nodes
+     - Test Kitchen: Used for continuous validation of Chef code
+     - Chef InSpec: Chef's open source security & compliance automation framework
+     - Chef-run: Used for running chef tasks
+     - Chef Workstation App: for updating and managing your chef tool
+
+2. What is a node?
+
+   - Nodes are basically machine which may be physical or virtual or hybrid. 
+   - Chef client maintains these node or servers.
+   - OHAI is also stored on the nodes which interacts with chef client to check any update from chef server.
+   - Knife & Bootstrap place role of connecting chef server with chef client placed in every node.
+
+3. What is Chef Server?
+
+   - Main server where cookbook is uploaded or configuration is uploaded.
+   - This is the main point from where the chef clients placed in each nodes will check for any file to be updated and pick it up accordingly.
+   - This can be physical or virtual.
+
+4. How to bootstrap a node? What exactly does bootstrapping a node means?
+
+   - Means setting up chef client on node systems so that the chef server and chef client can interact with each other
+   - Knife bootstrap command is used 
+
+5. What is the use of running Chef-Client periodically?
+
+   - Basically helps in keeping the nodes up-to-date with the configurations and stuff
+
+6. What is a Cookbook?
+
+   - It is basically collection of recipes along with configurations and policies and test files
+   - These are important part of chef through which we can configure the nodes and chef client will check these for configuring its nodes
+
+7.  How to upload a cookbook on Chef Server? (basically get acquainted with those commands)
+
+   - knife cookbook upload cookbook_name
+
+8. How to update a cookbook which is uploaded on Chef Server?
+
+   - knife cookbook upload cookbook_name --force

@@ -1,0 +1,26 @@
+- Please go through links below to understand Chef
+
+  - Study about what is chef https://www.chef.io/chef/ &
+    https://docs.chef.io/chef_overview.html
+    
+  - Create a free account on manage.chef.io (Hosted chef)
+
+  - Chef hands on https://learn.chef.io/modules/learn-the-basics/ubuntu#/
+
+  - Create a git repo and push all the assignments you do as part of above "hands on" to the repo. Share the link once done. 
+
+    
+
+  Learnings:
+
+  - Chef workstation IAC here to build infrastructure we write code in workstation.
+
+  - The term used for code is ‘RECIPE’ The place/folder where the recipes are kept is called ‘COOKBOOK’
+
+  - Cookbook however is not store at workstation but it is stored or upload at chef server The CLI tool which send/upload/push files from workstation to chef server is called ‘KNIFE’
+
+  - ‘KNIFE’ is also used to connect or push from chef server to nodes. Also the process for connecting from chef server to nodes is called ‘BOOTSTRAP’ Chef Supermarket** is the location in which community cookbooks are shared and managed. Cookbooks that are part of the Chef Supermarket may be used by any Chef user.
+
+  - Chef Infra Client run reporting, compliance reporting, high availability configurations, and Chef Infra Server replication are available as part of Chef Automate. 
+
+    
