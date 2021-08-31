@@ -1,0 +1,22 @@
+=> cd chef_training
+=> mkdir cookbooks
+=> chef generate cookbook cron_book
+=> chef generate recipe cron_book/ configure_cron
+=> create file  => file resource https://docs.chef.io/resources/file/
+
+file "/home/ad.msystechnologies.com/akhil.patkar/clone/chef_training/cookbooks/cron_book/recipes/current_time.txt" do
+    action :create_if_missing
+    mode "0755"
+end
+
+=> To create cron => cron resource https://docs.chef.io/resources/cron/
+cron 'first_cron' do
+    command "date >> /home/ad.msystechnologies.com/akhil.patkar/clone/chef_training/cookbooks/cron_book/recipes/current_time.txt"
+    minute '*/1'
+end
+
+=> include recipe in default.rb
+
+=> sudo chef-client --local-mode --runlist 'recipe[cron_book]'
+
+
