@@ -1,0 +1,288 @@
+cd
+ls
+pwd
+cp
+mv
+rm
+echo
+cat
+less same like cat but opens in new window
+grep
+mkdir
+touch
+chmod
+man + help
+
+rwx => read wirte execute
+
+chmod with change the permission of a perticular script
+
+example
+
+test.sh script file
+
+Add below
+#!/bin/sh
+
+echo 'helo lerner'
+
+
+save the file and come out
+ and execute 
+$ ./test.sh
+output: ./test.sh permission denied
+mostly this is because the scrip is only defaulted to read mode because of which we use chmod
+
+chmod +r
+chmod +w
+chmod +x
+
+
+chmod +x test.sh
+./test.sh
+Now it will display hello lerner from script file
+
+Also chmod 777 test.sh wold work the same
+
+777 => Basue user, group and others
+
+0  => 0 nothing
+1 only execute
+2 only write
+3 sum of 2+1 execute and write
+4 read
+5 4+1 read and execute
+6 read and write
+7 4+2+1 read write and execute
+
+man + help manual and command help
+
+=====================================
+Shell basics
+=========================
+
+1. What is shell?
+- Shell is nothing but converts the user commn=and  into commnads which are readable by the kermal
+- It interprated the user commands
+-  comments preceded with hash(#) sign
+
+Several types
+------------------------------------
+- Bourne shell
+- C shell
+-----------------------------------
+
+Practice:
+example1.sh
+#!/bin/sha => full path to the interprater
+
+#Author :Akhil
+#Script is as follows
+
+echo 'whats is your name?'
+read PERSON
+echo ''Hello, $PERSON"
+
+---------------
+Terminal
+-------------------
+chmod 777 example.sh
+--------------------
+what is ur name?
+akhil
+output: Hello akhil
+-------------------------------
+
+Variable
+===============================
+Pointer to actual data
+charater string which we asssign a vale, number, text, filename, devices
+
+3 kinds
+===============================
+- local variable
+- env variable
+- shell variable => can be compared to global variable
+
+---------------------------------
+
+Example:
+-------------------------------
+variable.sh
+#!/bin/sh
+#variable_name=variable_value
+no space on either side
+
+
+NAME='Akhil patkar'
+echo 'NAME
+readonly NAME
+NAME='Nikhil'
+=====================================
+will throw error variable NAME is read only variable
+
+
+
+
+
+unset variable
+========================================
+directs the shell to remove the variable
+
+NAME='Akhil patkar'
+unset NAME
+echo $NAME
+===========================================
+Output will show nothing as it deelete the value
+
+special variables
+=======================================
+
+precede by dollar($)
+
+$0 =. FIle name of the script
+$1 => any number from 1..9 depends on the argument
+$2 => second parameter
+$# => num of args supplied to script
+$* all the arguments that are double  quoted
+$@ all the args that are individually double quoted  
+$? exit status of the last command you executed
+$$ give the process number of current shell or process id
+
+Example: variable.sh
+===============================
+#!/bin/sh => full path to the interpreter
+
+echo "File name: $0"
+echo "Firstparameter: $1"
+echo "Second parameter: $0"
+echo "Quoted values: $@"
+echo "Quoted values: $*"
+echo "Number of parameters: $#"
+
+Note: the double quotes is important
+------------------------------------
+$ chmod 777 ./variable.sh
+$ ./variable.sh Hello world
+-------------------------------------
+Output will be:
+-----------------------------------
+File name: ./variable.sh
+Firstparameter: Hello
+Second parameter: ./variable.sh
+Quoted values: Hello world
+Quoted values: Hello world
+Number of parameters: 2
+
+Another example with $*
+=====================================
+
+#!/bin/sh
+
+for TOKEN in $*
+ do 
+echo $TOKEN
+done => this kis kind of end of statement or loop\
+==========================================
+
+$./variable.sh Hello world this is akkhil
+-----------------------------
+
+Hello
+world
+this
+is
+akkhil
+====================================
+
+2. Basic operators
+===========
+Arithematic, boolean, string, file
+all should be inside square brackets [$a-$b]
+
+3. Loops
+========================
+for loop 
+
+for i in 0 1 2 3
+do
+echo 'hello'
+done
+
+
+
+while
+===========================
+a=0
+while [$a -lt 10]
+do
+echo $a
+a=`expr $a + 1`
+done
+
+until
+======================
+until [ ! $a -lt 10]
+do
+echo $a
+a=`expr $a +1`
+done
+
+Nesting
+======================
+loo inside loop 
+
+infinite loop
+-----------------------
+
+a=10
+until [ $a -gt 0 ]
+do
+echo $a
+a=`expr $a + 1`
+done
+
+break => will come out of entire loop
+continue will come aout from the iteration ists been specified but ru the other iteration if specified
+
+
+
+
+Shell functions:
+==================================================
+
+function functionname () {
+#your code here
+}
+
+Example: functions.sh
+
+#!/bin/sh
+
+Hello () {
+echo "Hello learner"
+
+}
+
+#invoke function
+
+Hello Priyanka Chopra
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
